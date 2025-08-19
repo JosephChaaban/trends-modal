@@ -1,0 +1,11 @@
+services:
+  trends:
+    build: .
+    environment:
+      MODAL_TOKEN_ID: ${MODAL_TOKEN_ID}
+      MODAL_TOKEN_SECRET: ${MODAL_TOKEN_SECRET}
+      NEON_DATABASE_URL: ${NEON_DATABASE_URL}
+      KEYWORDS: ${KEYWORDS:-football}
+      GEOS: ${GEOS:-US}
+      MODE: ${MODE:-full}
+      WRITERAW: ${WRITERAW:-none}
