@@ -8,6 +8,9 @@ Thought process and elaboration at the bottom of this readme
 
 ---
 
+## Note for running on Windows
+- The docker compose up --build command might error out due to Windows Line Endings. If that happens you just need to run dos2unix entrypoint.sh in your bash shell, or, in Powershell: (Get-Content -Raw -Path "entrypoint.sh").Replace("`r`n", "`n") | Set-Content -Path "entrypoint.sh"
+
 ## Prerequisites
 - Docker desktop and Docker Compose (included with desktop) (for containerized runner)
 - Neon Postgres database (connection string)
@@ -157,3 +160,4 @@ Data is fetched from pytrends -> manipulated to a more convenient shape (melting
 - Data variety: Usage of the api here is pretty simple, there's definitely more that can be done (Category specific tables, comparisons of "trend groups", more granular timeframes). Other data sources can be considered (social media app APIs), the staging -> final table approach would go along well (get the data into postgres, even if it varies across sources, then harmonize + upsert into final table)
 - Presence of parquet files: Allows us to easily move our data around if needed with proper tooling. Starlake (https://starlake.ai/) integrates very well as a data extraction and movement tool from point A to point B, wether it's from files to DBs, or DBs to file. Scenario: Want to eventually move away from Neon and load into Snowflake without losing historical data and potentially doing some pre-processing, Apache Spark based tools like starlake with dedicated connectors fit perfectly for the job
 - Serving the application: Can use built-in Modal capabilities to host an API endpoint to call the application with http requests, could facilitate integration.
+- For better project management, can adopt uv beyond building the Modal image.
