@@ -9,7 +9,7 @@ Thought process and elaboration at the bottom of this readme
 ---
 
 ## Note for running on Windows
-- The docker compose up --build command might error out due to Windows Line Endings. If that happens you just need to run dos2unix entrypoint.sh in your bash shell, or, in Powershell: (Get-Content -Raw -Path "entrypoint.sh").Replace("`r`n", "`n") | Set-Content -Path "entrypoint.sh"
+- The docker compose up --build command might error out due to Windows Line Endings. If that happens you just need to run `dos2unix entrypoint.sh` in your bash shell, or, in Powershell: `(Get-Content -Raw -Path "entrypoint.sh").Replace("`r`n", "`n") | Set-Content -Path "entrypoint.sh"`
 
 ## Prerequisites
 - Docker desktop and Docker Compose (included with desktop) (for containerized runner)
